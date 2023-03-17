@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple caro</title>
+</head>
+<body>
+    <h3>Caro Game Simple</h3>
+    <p id="carogame">
+    <input type="button" value="Bắt đầu" onclick="changeValue()">
+
+    <script>
+        let b = document.getElementById("carogame");
+
+        let board = [];
+        let data = "";
+        // vòng for này dùng để tạo mảng chứa 5 phần tử là các mảng  con [0, 0, 0, 0, 0]
+        for (let i = 0; i < 5; i++) {
+            board[i] = new Array(0, 0, 0, 0, 0);
+        }
+        // vòng for này dùng để hiển thị bảng
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>"; // tạo hàng trong bảng caro
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;"; // tạo cột cho dòng caro
+            }
+        }
+
+    data += "<br/><br/><input type='button' value='Bắt đầu' onclick='changeValue()'>" // để hiển thị bảng bao gồm 5 dòng 5 cột mỗi cột chứa số 0  và thêm một nút
+    b.innerHTML = "<hr/>"+data; // hiển thị ra màn hình html
+
+    function changeValue() {
+        let positionX = prompt("X: "); // vị trí dòng
+        let positionY = prompt("Y: "); // vị trí cột
+        data = "";
+        board[positionX][positionY] = "x"; // thay số o bằng x mỗi khi nhập vị trí xong
+        for (let i = 0; i < 5; i++) {
+            data += "<br/>"; // cứ duyệt hết 1 phần tử thì xuống dòng
+            for (let j = 0; j < 5; j++) {
+                data += board[i][j] + "&nbsp;&nbsp;&nbsp;&nbsp;"; // cập nhật giá trị x cho vị trí board[i][j]
+            }
+        }
+        data += "<br/><br/><input type='button' value='Bắt đầu' onclick='changeValue()'>" // mỗi lần thực hiện xong thì cập nhật lại giao diện mới
+        b.innerHTML = "<hr/>" + data;
+    }
+
+
+    </script>
+</body>
+</html>
